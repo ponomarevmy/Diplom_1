@@ -62,4 +62,9 @@ class TestBurger:
         burger.set_buns(bun)
         burger.add_ingredient(ingredient1)
         burger.add_ingredient(ingredient2)
-        assert 'Red bun' in burger.get_receipt()
+        receipt = burger.get_receipt()
+        print(receipt)
+        assert f'(==== {bun.get_name()} ====)' in receipt
+        assert f'= {ingredient1.get_type().lower()} {ingredient1.get_name()} =' in receipt
+        assert f'= {ingredient2.get_type().lower()} {ingredient2.get_name()} =' in receipt
+        assert f'Price: {burger.get_price()}' in receipt
